@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+  </header>
+
+  <main>
+    <section>
+      <figure>
+        <img src="profile.jpg" alt="My Photo" width="200">
+        <figcaption>shyam varsheny – Web Developer</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>About Me</h2>
+      <p>Hello! I am shyam, a passionate front-end developer who loves coding and design.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li>B.Tech in Computer Science – GLA University (2021)</li>
+        <li>High School – silver stone School (2017)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>React.js, Bootstrap</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Email: shyam.varshney_cs24@email.com</p>
+      <p>Phone: +91 98765 43210</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 shyam varshney. All rights reserved.</p>
+  </footer>
+</body>
+</html>
