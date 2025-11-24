@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Number Pattern Generator</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        width: 450px;
+        padding: 35px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+        backdrop-filter: blur(12px);
+        color: #fff;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .container:hover {
+        transform: scale(1.02);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    select, input {
+        width: 90%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+        font-size: 16px;
+        background: rgba(255,255,255,0.85);
+        color: #333;
+    }
+
+    button {
+        width: 90%;
+        padding: 12px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 12px;
+        font-size: 18px;
+        background: #ff2d75;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    button:hover {
+        background: #ff1a5d;
+        transform: translateY(-3px);
+    }
+
+    pre {
+        margin-top: 20px;
+        font-size: 20px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        text-align: left;
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.25);
+        backdrop-filter: blur(5px);
+    }
+
+    .even {
+        color: #ffe066;
+        font-weight: 700;
+    }
+    .odd {
+        color: #00ffb3;
+        font-weight: 700;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Pattern Generator</h2>
+
+    <select id="patternType">
+        <option value="triangle">Triangle</option>
+        <option value="pyramid">Pyramid</option>
+        <option value="diamond">Diamond</option>
+    </select>
+
+    <input type="number" id="rows" placeholder="Enter number of rows" min="1" />
+
+    <button onclick="generatePattern()">Generate Pattern</button>
+
+    <pre id="output"></pre>
+</div>
+
+<script>
+
+function generatePattern() {
+    const type = document.getElementById("patternType").value;
+    const rows = parseInt(document.getElementById("rows").value);
+    let result = "";
+
+    if (!rows || rows < 1) {
+        document.getElementById("output").textContent = "Enter a valid number!";
+        return;
+    }
+
+    if (type === "triangle") result = triangle(rows);
+    else if (type === "pyramid") result = pyramid(rows);
+    else if (type === "diamond") result = diamond(rows);
+
+    document.getElementById("output").innerHTML = result;
+}
+
+// Triangle 
+function triangle(rows) {
+    let p = "";
+    for (let i = 1; i <= rows; i++) {
+        let row = "";
+        for (let j = 1; j <= i; j++) row += j + " ";
+        p += `<span class="${i % 2 ? 'odd' : 'even'}">${row}</span>\n`;
+    }
+    return p;
+}
+
+// Pyramid
+function pyramid(rows) {
+    let p = "";
+    for (let i = 1; i <= rows; i++) {
+        let row = " ".repeat(rows - i);
+        for (let j = 1; j <= i; j++) row += j + " ";
+        p += `<span class="${i % 2 ? 'odd' : 'even'}">${row}</span>\n`;
+    }
+    return p;
+}
+
+// Diamond 
+function diamond(rows) {
+    let p = "";
+
+    for (let i = 1; i <= rows; i++) {
+        let row = " ".repeat(rows - i);
+        for (let j = 1; j <= i; j++) row += j + " ";
+        p += `<span class="${i % 2 ? 'odd' : 'even'}">${row}</span>\n`;
+    }
+
+    for (let i = rows - 1; i >= 1; i--) {
+        let row = " ".repeat(rows - i);
+        for (let j = 1; j <= i; j++) row += j + " ";
+        p += `<span class="${i % 2 ? 'odd' : 'even'}">${row}</span>\n`;
+    }
+    return p;
+}
+</script>
+
+</body>
+</html>
